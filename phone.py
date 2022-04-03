@@ -7,13 +7,14 @@ from tkinter import BOTTOM, TOP, Entry, Label, StringVar, Tk, Button, RAISED
 text = ""
 
 root = Tk()
+root.resizable(False, False)
 
 empty = Label(root)
 empty.grid(row=0,column=0)  # Just to RePosition the Grid hehe
 
 num = StringVar()
 textbox = Entry(root, textvariable=num, state='readonly') 
-textbox.place(x=1, y=1)
+textbox.place(x=1, y=1, width=110)
 
 
 labels = [['1', '2', '3'],  # phone dial label texts
@@ -35,7 +36,7 @@ for r in range(4):  # for every row r = 0, 1, 2, 3
         # button instead of label
         buttons = Button(root,
                         relief=RAISED,  # raised border
-                        padx=21,  # make label wide
+                        padx=10,  # make label wide 
                         text=labels[r][c],
                         command=handler, )  # label text
         # place label in row r and column c
@@ -47,7 +48,7 @@ def clear():
     text = ""
     num.set("")
 
-btnClear = Button(root, relief=RAISED, padx=5, text="clear", command= clear)
+btnClear = Button(root, relief=RAISED, text="clear", command= clear)
 btnClear.grid(row=5, column=1)
 
 root.mainloop()
